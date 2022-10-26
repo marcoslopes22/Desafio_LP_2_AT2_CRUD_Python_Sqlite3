@@ -48,17 +48,17 @@ if(__name__=="__main__"):
                     if statusLista:
                         print("Atualizar Ponto de Coleta:");
                         op.ler();
-                        numeroPonto = str(input("Informe o Número do Ponto de Coleta: "));
-                        resultadoPesquisa = op.pesquisarNumeroPonto(numeroPonto);
+                        idRegistro = str(input("Informe o ID do Ponto de Coleta: "));
+                        resultadoPesquisa = op.pesquisarID(idRegistro);
                         while resultadoPesquisa == False:
                             print("Este Ponto de Coleta não está cadastrado! Tente novamente.");
-                            numeroPonto = str(input("Informe o Número do Ponto de Coleta: "));
-                            resultadoPesquisa = op.pesquisarNumeroPonto(numeroPonto);
+                            idRegistro = str(input("Informe o ID do Ponto de Coleta: "));
+                            resultadoPesquisa = op.pesquisarID(idRegistro);
                         for i in resultadoPesquisa: print(f'''ID: {i[0]}, Título do Ponto: {i[1]}, Nome do Ponto: {i[2]}, Data de Criação: {i[3]}, Nome do Responsável: {i[4]}, Descrição: {i[5]}, Status: {i[6]}''');
                         print("\n");
                         atribuirValores();
-                        op.atualizar(numeroPonto);
-                        confirmar = op.pesquisarNumeroPonto(numeroPonto);
+                        op.atualizar(idRegistro);
+                        confirmar = op.pesquisarID(idRegistro);
                         if confirmar: print("Atualizado com sucesso!");
                         else: print("Não foi possível atualizar os dados do Ponto de Coleta!");
                     else: print("Operação Inválida! Não há alunos cadastrados no sistema!");
@@ -67,12 +67,12 @@ if(__name__=="__main__"):
                     if statusLista:
                         print("4. Deletar Ponto de Coleta:");
                         op.ler();
-                        numeroPonto = str(input("Informe o Número do Ponto de Coleta: "));
-                        resultadoPesquisa = op.pesquisarNumeroPonto(numeroPonto);
+                        idRegistro = str(input("Informe o ID do Ponto de Coleta: "));
+                        resultadoPesquisa = op.pesquisarID(idRegistro);
                         while resultadoPesquisa == False:
                             print("Este Ponto de Coleta não está cadastrado! Tente novamente.");
-                            numeroPonto = str(input("Informe o Número do Ponto de Coleta: "));
-                            resultadoPesquisa = op.pesquisarNumeroPonto(numeroPonto);
+                            idRegistro = str(input("Informe o ID do Ponto de Coleta: "));
+                            resultadoPesquisa = op.pesquisarID(idRegistro);
                         for i in resultadoPesquisa: print(f'''ID: {i[0]}, Título do Ponto: {i[1]}, Nome do Ponto: {i[2]}, Data de Criação: {i[3]}, Nome do Responsável: {i[4]}, Descrição: {i[5]}, Status: {i[6]}''');
                         print("\n");
                         confirmar = int(0);
@@ -80,7 +80,7 @@ if(__name__=="__main__"):
                             confirmar = int(input("Tem certeza que deseja excluir o registro?\n1. Sim\n2. Não, cancelar: "));
                             match confirmar:
                                 case 1: 
-                                    op.deletar(numeroPonto);
+                                    op.deletar(idRegistro);
                                     print("Ponto de Coleta excluído com sucesso!");
                                 case 2: print("Exclusão de ponto de coleta cancelada com sucesso...");
                                 case _: print("Operação inválida! Tente novamente.");

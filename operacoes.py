@@ -81,8 +81,8 @@ class Operacoes:
         self.__conn.commit();
 
     # DELETAR;
-    def deletar(self,numeroPonto):
-        self.__cur.execute(f"DELETE FROM oportunidades_coleta WHERE id='{numeroPonto}'");
+    def deletar(self,idRegistro):
+        self.__cur.execute(f"DELETE FROM oportunidades_coleta WHERE id='{idRegistro}'");
         self.__conn.commit();
     
     # PESQUISAR;
@@ -100,8 +100,8 @@ class Operacoes:
         elif result != []: return result;
 
     # PESQUISAR PELO NÚMERO DE CADASTRO DO PONTO DE COLETA;
-    def pesquisarNumeroPonto(self,numeroPonto):
-        self.__cur.execute(f"SELECT * FROM oportunidades_coleta WHERE id='{numeroPonto}'");
+    def pesquisarID(self,idRegistro):
+        self.__cur.execute(f"SELECT * FROM oportunidades_coleta WHERE id='{idRegistro}'");
         self.__conn.commit();
         result = self.__cur.fetchall();
         if result == []: return False;
